@@ -1,0 +1,49 @@
+{
+  "name": "esbuild-vue",
+  "type": "module",
+  "exports": {
+    ".": "./dev-server/esbuild.js"
+  },
+  "main": "dev-server/esbuild.js",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "dev": "pnpm run /^dev:/",
+    "build": "",
+    "dev:esbuild": "bun ./dev-server/esbuild.js",
+    "dev:ssc": "ssc build -r -w -o",
+    "debug:esbuild": "node ./dev-server/esbuild.js",
+    "debug:ssc": "SOCKET_RUNTIME_SERVICE_WORKER_DEBUG=1 ssc build -r -w",
+    "debug": "pnpm run /^debug:/",
+    "postinstall": "pnpm link --global @socketsupply/socket",
+    "lint": "pnpm eslint . --fix"
+  },
+  "alias": {
+    "@/assets": "./src/assets"
+  },
+  "peerDependencies": {
+    "typescript": "^5.4.5"
+  },
+  "dependencies": {
+    "@auth/core": "^0.30.0",
+    "@auth/unstorage-adapter": "^2.2.0",
+    "@hono/auth-js": "^1.0.8",
+    "@socketsupply/socket-node": "^0.5.0",
+    "autoprefixer": "^10.4.19",
+    "daisyui": "^4.12.2",
+    "esbuild": "^0.20.2",
+    "hono": "^4.4.6",
+    "pinia": "^2.1.7",
+    "unplugin-vue": "^5.0.5",
+    "unstorage": "^1.10.2",
+    "vue": "^3.4.27",
+    "vue-router": "^4.3.3"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.21.1",
+    "@types/node": "20.12.7",
+    "eslint": "9.4.0",
+    "eslint-plugin-format": "^0.1.1",
+    "postcss": "^8.4.38",
+    "tailwindcss": "3.4.3"
+  }
+}
