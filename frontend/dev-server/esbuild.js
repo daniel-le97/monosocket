@@ -36,7 +36,7 @@ const builder = await esbuild.context({
   },
   format: 'esm',
   platform: 'browser',
-  // minify: true,
+  minify: true,
   // sourcemap: true,
   treeShaking: true,
   splitting: true,
@@ -71,6 +71,7 @@ const server = createServer(async (req, res) => {
   res.end('okay')
   if (args.includes('prod')) {
     console.log('Exiting...')
+    server.close()
     process.exit(0)
   }
 }).listen(3000)
