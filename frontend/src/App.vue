@@ -1,11 +1,26 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import * as os from 'socket:os'
+import { RouterLink, RouterView } from 'vue-router';
+import * as os from 'socket:os';
 // import { LLM } from 'socket:ai'
-import HelloWorld from './components/HelloWorld.vue'
+import HelloWorld from './components/HelloWorld.vue';
+import { useCounterStore } from './stores/counter';
+import application from 'socket:application';
+const counter = useCounterStore();
+// application.backend.open();
+const onClick = () => {
+  application.backend.open( { force: true } );
+  counter.increment();
 
+};
+// const currentWindow = await application.getCurrentWindow();
+
+// currentWindow.on( 'pong', ( event ) => {
+//   console.log( event );
+// } );
 // const llm = new LLM()
-const _platform = os.platform()
+const _platform = os.platform();
+
+
 </script>
 
 <template>
@@ -15,6 +30,11 @@ const _platform = os.platform()
       Welcome to Your Vue + Socket + Esbuild App
     </h1>
     <div class="wrapper">
+      <div class="flex justify-center">
+        <p>Platform: {{ _platform }}</p>
+        <p>{{ counter.count }}</p>
+        <button class="btn btn-square w-20" @click=" onClick ">Increment</button>
+      </div>
       <HelloWorld msg="You did it! on nice changes" />
 
       <nav>

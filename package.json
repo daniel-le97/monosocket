@@ -4,12 +4,15 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev:esbuild": "cd frontend && node ./dev-server/esbuild.js",
-    "dev:ssc": "ssc build -r",
-    "dev": "pnpm run /^dev:.*/",
+    "esbuild:build": "cd frontend && node ./dev-server/esbuild.js",
+    "esbuild:ssc": "ssc build -r",
+    "dev:esbuild": "pnpm run /^esbuild:.*/",
     "prod:esbuild": "cd frontend && node ./dev-server/esbuild.js prod",
     "prod:ssc": "ssc build --prod",
     "taze": "cd frontend && pnpm dlx taze -w",
+    "dev:vite": "pnpm run /^vite:.*/",
+    "vite:dev": "cd viter && pnpm run dev",
+    "vite:ssc": "ssc build -r -w",
     "link:socket": "cd frontend && pnpm link --global @socketsupply/socket"
   }
 }

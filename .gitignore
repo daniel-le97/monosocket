@@ -10,7 +10,7 @@ lerna-debug.log*
 .sscrc
 .*.env
 
-vite/
+
 
 # Ignore all files in the node_modules folder
 node_modules/
